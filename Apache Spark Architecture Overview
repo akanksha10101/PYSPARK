@@ -1,0 +1,210 @@
+                                                                                        🔹 Apache Spark Architecture Overview
+
+
+Spark architecture is built on two main abstractions:
+
+                             RDD (Resilient Distributed Dataset)
+
+                             DAG (Directed Acyclic Graph)
+
+
+🔹 Resilient Distributed Dataset (RDD)
+
+                             Resilient – Fault-tolerant; can recover lost data.
+
+                            Distributed – Data spread across multiple cluster nodes.
+
+                             Dataset – Collection of partitioned data.
+
+                            Core abstraction in Spark for distributed data operations.
+
+🔹 Directed Acyclic Graph (DAG)
+
+                            Represents a sequence of transformations on RDDs.
+
+                            Direct – Data transitions from one state to another.
+
+                             Acyclic – No loops; cannot return to previous states.
+
+                            Replaces Hadoop’s MapReduce model → faster performance.
+
+🔹 Spark Cluster Architecture
+
+                        Follows Master/Slave model with:
+
+                                        Driver (Master Process)
+                                        
+                                        Executor (Worker Process)
+                                        
+                                        Cluster Manager
+
+
+🧠 1. Spark Driver
+
+                     Central controller and coordinator of Spark application.
+
+                     Runs the main program and creates SparkContext.
+
+                          Components:
+                          
+                          DAGScheduler – Builds DAG, splits jobs into stages.
+                          
+                          TaskScheduler – Assigns tasks to executors.
+                          
+                          BackendScheduler – Manages cluster resource allocation.
+                          
+                          BlockManager – Handles data storage in memory/disk.
+                          
+                          Powers the interactive Spark Shell (Scala/Python/R).
+
+                        
+⚙️ 2. Executors (Workers)
+                        
+                        Run on worker nodes; execute tasks assigned by driver.
+                        
+                        Handle data processing & storage.
+                        
+                        Can be static (fixed) or dynamic (adjust with workload).
+                        
+                        Communicate continuously with the driver.
+                        
+                        Store intermediate results in memory/disk.
+
+🗄️ 3. Cluster Manager
+
+                  Allocates resources (CPU, memory) to Spark jobs.
+                  
+                  Communicates between driver and executors.
+
+
+Types of cluster managers:
+
+                          Spark Standalone
+                          
+                          Hadoop YARN
+                          
+                          Apache Mesos
+                          
+                          Kubernetes
+
+
+🔹 Key Spark Terminologies
+                          🔸 Transformations:
+                          
+                          Operations that create new RDDs (lazy evaluation).
+                          
+                          Examples: map(), filter().
+
+                          🔸 Actions:
+                          
+                          Trigger computation and return results.
+                          
+                          Examples: collect(), saveAsTextFile().
+
+                          🔸 DAG (Directed Acyclic Graph):
+                          
+                          Logical plan showing transformation lineage for fault tolerance.
+
+
+🔹 Execution Hierarchy
+
+                                  Application – Entire Spark program.
+                                  
+                                  Job – Triggered by an action (e.g., collect()).
+                                  
+                                  Stage – Set of tasks without data shuffling.
+                                  
+                                  Task – Smallest execution unit (per data partition).
+
+🔹 Resource Concepts
+
+                                  Executor – JVM process running on workers.
+                                  
+                                  Partition – Logical division of RDD/DataFrame.
+                                  
+                                  Core – CPU unit handling one task at a time.
+                                  
+                                  On-Heap Memory – Managed by JVM.
+                                  
+                                  Off-Heap Memory – Managed by OS.
+
+🔹 Jobs, Stages, and Tasks Workflow
+
+                          User Action → Job Creation
+                          
+                          An action (show(), count()) starts a new job.
+
+
+Job → Stages
+
+            Split by DAG scheduler into stages (based on shuffles).
+
+Stages → Tasks
+
+            Each partition = one task.
+
+Tasks run in parallel on executors.
+
+🐍 PySpark Overview
+                        
+                        Official Python API for Apache Spark.
+                        
+                        Enables distributed computing using Python syntax.
+                        
+                        Integrates with NumPy, Pandas, scikit-learn, etc.
+
+🔹 Features of PySpark
+
+                          Distributed Processing – Handles huge datasets.
+                          
+                          Ease of Use – Python interface for Spark’s power.
+                          
+                          Multiple Workloads – Batch, streaming, ML, SQL.
+                          
+                          MLlib Support – Built-in scalable ML algorithms.
+                          
+                          Real-time Processing – Structured Streaming API.
+                          
+                          Python Library Integration – Works with Pandas/NumPy.
+                          
+                          Fault Tolerance & Scalability – Inherits from Spark core.
+
+🔹 PySpark Working Components
+
+                      Driver Program – Runs main application, manages tasks.
+                      
+                      Worker Nodes – Execute assigned tasks in parallel.
+                      
+                      Cluster Manager – Allocates cluster resources.
+
+🔹 Applications of PySpark
+
+                                Big Data Analytics – ETL, data pipelines.
+                                
+                                Machine Learning – Model training on large data.
+                                
+                                Stream Processing – Real-time data streams.
+                                
+                                Data Transformation – Integration from multiple sources.
+
+🔹 Advantages of PySpark
+
+                        High Performance (In-memory computation).
+                        
+                        Strong Community Support (Apache + Python).
+                        
+                        Flexibility (Local, cloud, or hybrid deployment).
+
+🔹 Core Components of PySpark
+
+                          SparkContext – Entry point for applications.
+                          
+                          RDD – Low-level distributed dataset.
+                          
+                          DataFrame – High-level table-like structure.
+                          
+                          Dataset – (Only in Scala/Java).
+                          
+                          Spark SQL – Module for SQL queries on structured data.
+
+
