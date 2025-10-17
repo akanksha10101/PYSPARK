@@ -1,0 +1,20 @@
+How to create a SparkSession:
+
+
+
+# Imports
+from pyspark.sql import SparkSession
+
+# Create SparkSession
+spark = SparkSession.builder.master("local[1]").appName("ExampleApp").getOrCreate() 
+
+
+
+Explanation:
+master("local[1]"): Specifies where Spark will run: "local[x]": Run Spark locally on your machine. Replace x with the number of CPU cores to use. For example: local[1]: Use 1 CPU core. local[*]: Use all available CPU cores. In real-time applications, this will be replaced by spark-submit with options like yarn (for cluster).
+
+appName("ExampleApp"): Sets the name of your application. This name appears in Spark's UI to help you track running jobs.
+
+getOrCreate(): Returns the existing SparkSession if one is already created, or initializes a new one.
+
+NOTE : In PySpark, we import from the pyspark.sql module because Spark SQL is the primary library used for working with structured and semi-structured data in PySpark. The pyspark.sql module provides the necessary tools for managing data as DataFrames and performing SQL-like operations, making it a critical part of working with PySpark.
