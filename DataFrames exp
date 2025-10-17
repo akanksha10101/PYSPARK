@@ -1,0 +1,70 @@
+DataFrame:
+
+                    Distributed collection of data organized into named columns (like a database table).
+
+                    Built on top of RDDs with schema and query optimization.
+
+                    Balances structured data handling and distributed computation.
+
+Features
+
+                ✅ Schema Support – structured columns with defined data types.
+
+                ✅ High-Level API – supports SQL queries, filters, aggregations, joins, etc.
+
+                ✅ Query Optimization – uses Catalyst Optimizer.
+
+                ✅ In-Memory Processing – allows caching for faster execution.
+
+Advantages
+
+            🔹 Easier to use with structured data.
+
+            🔹 Optimized for performance.
+
+            🔹 Reduces code complexity with a high-level API.
+
+Disadvantages
+
+               ⚠️ Limited control over low-level transformations.
+
+               ⚠️ Less flexible compared to RDDs.
+
+Dataset
+
+         Extension of DataFrame with type safety and object-oriented programming.
+
+         Combines RDD type-safety with DataFrame performance optimizations.
+
+         Provides compile-time error checking and optimized execution.
+
+Features
+
+        ✅ Type-Safe – ensures compile-time type safety.
+
+        ✅ Optimized Execution – uses Catalyst Optimizer.
+
+        ✅ Rich APIs – supports functional and relational transformations.
+
+Advantages
+
+             🔹 Combines DataFrame performance with RDD safety.
+
+             🔹 Ideal for developers who need strong typing and complex transformations.
+
+Disadvantages
+
+              ⚠️ Limited support in PySpark (mainly for Scala/Java).
+
+              ⚠️ Adds unnecessary complexity if DataFrames are sufficient.
+
+
+Quick Comparison
+
+Aspect                      	RDD	DataFrame	Dataset
+Type Safety                    	✅	   ❌	           ✅
+Schema	                        ❌	   ✅	           ✅
+Optimization	                ❌	   ✅	           ✅
+Ease of Use	                ❌	   ✅	           ✅
+Language Support	        All	   All	         Scala/Java only
+Performance	               Moderate	   High	           High
