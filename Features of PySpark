@@ -1,0 +1,13 @@
+ Apache Spark – Features Summary Table
+
+Feature	                                              Purpose / Description	                                                                  Key Benefit
+1. Swift Processing	                          Uses in-memory computing to minimize disk I/O and speed up data processing.	                Up to 100× faster than Hadoop; enables real-time and batch efficiency.
+2. Dynamic & Versatile Operations            	Provides 80+ high-level operators for easy transformations and actions.	                    Simplifies complex workflows like ETL, analytics, ML, etc.
+3. In-Memory Computation	                    Stores intermediate results in memory instead of writing to disk.                          	Boosts performance for iterative and repeated computations.
+4. Reusability Across Workloads	              Same framework for batch, streaming, and interactive processing.	                          Enables code reusability and simplifies multi-use workloads.
+5. Fault Tolerance	                          Uses RDD lineage to automatically recover lost data after node failure.	                    Ensures reliable, fault-tolerant execution.
+6. Real-Time Stream Processing               	Handles real-time data streams via Spark Streaming (micro-batches).	                        Enables low-latency analytics for use cases like fraud detection and IoT.
+7. Lazy Evaluation                          	Builds a logical execution plan before performing actions.                                 	Optimizes performance by avoiding unnecessary computations.
+8. Polyglot Support	                          Supports Python, Scala, Java, and R with interactive shells.                               	Increases developer accessibility and flexibility.
+9. Support for Advanced Analytics            	Integrates libraries – Spark SQL, MLlib, GraphX, Spark Streaming.	                          Provides a complete analytics ecosystem within one framework.
+10. Integration with Hadoop                  	Works with HDFS, Hive, HBase, and can run on YARN.	                                        Seamless integration with existing Hadoop infrastructure.
