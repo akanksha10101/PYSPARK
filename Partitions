@@ -1,0 +1,62 @@
+RDD Partitions in Apache Spark
+
+1. Definition
+
+            RDDs (Resilient Distributed Datasets) are divided into smaller logical chunks called partitions.
+            
+            Each partition represents a subset of data processed independently and in parallel.
+            
+            Partitioning is fundamental to Spark’s ability to perform distributed and parallel computation efficiently.
+
+
+2. Purpose of Partitioning
+
+            Enables parallel processing across multiple nodes or cores.
+            
+            Ensures load distribution by dividing large datasets into smaller tasks.
+            
+            Improves performance and scalability by utilizing all available cluster resources.
+            
+            Provides fault tolerance—each partition can be recomputed if lost.
+
+3. Partitioning in Spark
+
+        When creating an RDD using methods such as:
+        
+                        parallelize()
+                        
+                        textFile()
+                        
+                        wholeTextFiles()
+
+Spark automatically determines the number of partitions based on:
+
+                    The number of available cores
+                    
+                    The cluster configuration (in a distributed setup)
+
+          🧠 Example:
+      
+      rdd = sc.parallelize([1, 2, 3, 4, 5, 6], 3)
+      print(rdd.getNumPartitions())  # Output: 3
+
+
+4. Default Partitioning Behavior
+                    Method                      	Behavior
+                    parallelize()	              Splits data into partitions based on system cores or specified number.
+                    textFile()	                  Automatically partitions data depending on file size and cluster configuration.
+                    wholeTextFiles()              	Each file typically becomes one partition.
+                    Default Rule	               On a single machine, number of partitions ≈ number of CPU cores.
+5. Key Points
+
+Each partition is the smallest unit of parallel execution in Spark.
+
+            Too few partitions → low parallelism (underutilization).
+            
+            Too many partitions → overhead in scheduling tasks.
+
+Partitioning can be customized using:
+
+                  repartition(n) → increases/decreases number of partitions.
+                  
+                  coalesce(n) → merges partitions to optimize performance.
