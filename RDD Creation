@@ -1,0 +1,51 @@
+RDDs (Resilient Distributed Datasets) can be created in PySpark using various methods depending on the source of the data.
+Below are the primary methods for creating RDDs:
+
+          1. Creating RDD from a Python List using parallelize():
+                  The parallelize() method is used to create an RDD from an existing collection in memory. This is suitable for testing and small-scale applications where the data is already loaded in the driver program.
+
+                  # Create RDD from a Python list
+                  data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                  rdd = spark.sparkContext.parallelize(data)
+                  
+                  # Print the RDD elements
+                  print(rdd.collect())
+
+          2.Creating RDD from an External Text File using textFile()
+                  The textFile() method reads data from a text file and creates an RDD. Each line in the file becomes an element of the RDD.
+                  
+                  NOTE: First, upload text file to dbfs and then copy the path from there instead of directly copying the path from location. The data which we have used is sample data which consists of 4 lines with random data.
+
+                            # Replace with the appropriate file path after upload
+                            
+                            # Create RDD from the file
+                            rdd2 = spark.sparkContext.textFile("dbfs:/FileStore/shared_uploads/ronakbhasin2001@gmail.com/Sample_dataset-1.txt")
+                            
+                            # Print the first few lines of the RDD
+                            print(rdd2.take(2))
+          3. Creating RDD from Whole Files using wholeTextFiles()
+                The wholeTextFiles() method reads entire files into an RDD as key-value pairs. The key is the file path, and the value is the file content.
+
+                                             # Create RDD from the whole text file
+                            rdd3 = spark.sparkContext.wholeTextFiles("dbfs:/FileStore/shared_uploads/ronakbhasin2001@gmail.com/Sample_dataset-4.txt")
+                            
+                            # Print only the content (second part of the tuple) from the first file
+                            print(rdd3.take(1)[0][1])  # [0] to get the first tuple, [1] to get the file content
+
+          4..Creating an Empty RDD without Partitions
+                  The emptyRDD() method creates an RDD with no data and no partitions.
+             # Create an empty RDD
+                              empty_rdd = spark.sparkContext.emptyRDD()
+                              
+                              # Check if RDD is empty
+                              print(empty_rdd.isEmpty())
+          
+            5. Creating an Empty RDD with Partitions
+            To create an empty RDD with specified partitions, use the parallelize() method with an empty list.
+                            
+                            # Create an empty RDD with 10 partitions
+                            empty_rdd_with_partitions = spark.sparkContext.parallelize([], 10)
+                            
+                            # Get the number of partitions
+                            print(empty_rdd_with_partitions.getNumPartitions())
+
