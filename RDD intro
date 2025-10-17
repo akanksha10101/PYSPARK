@@ -1,0 +1,46 @@
+🔹 Introduction to Resilient Distributed Datasets (RDD) in PySpark
+
+
+
+1. Definition
+                
+                RDD (Resilient Distributed Dataset) is PySpark’s core data structure, representing an immutable, distributed collection of objects.
+                
+                It is logically partitioned, allowing processing across multiple cluster nodes.
+                
+                Can store any type of object — Python, Java, Scala, or user-defined classes.
+                
+                Enables fast and efficient MapReduce-style computations.
+                
+                Formally defined as a read-only, partitioned collection of records created via deterministic operations.
+
+
+2. Key Features of RDD
+Feature	Description
+                  Resilient	Fault-tolerant — can recover data automatically after node failure.
+                  Distributed	Operates across multiple cluster nodes for parallel computation.
+                  Dataset	Represents partitioned data collections such as lists, tables, or tuples.
+
+
+3. Benefits of RDD
+
+                    ✅ Fault Tolerance: Automatically rebuilds lost partitions using lineage.
+                    
+                    ⚙️ Parallel Processing: Splits data across partitions for simultaneous execution.
+                    
+                    🔄 Flexibility: Supports structured, semi-structured, and unstructured data.
+                    
+                    🔒 Immutability: Ensures data consistency by preventing modification.
+                    
+                    🧠 Lazy Evaluation: Delays execution until an action is triggered, allowing Spark to optimize performance.
+
+4. Limitations of RDD
+
+Limitation	                                       Explanation
+Lack of Schema	                              Not ideal for structured data; lacks built-in schema support.
+Verbose Code                                	Requires detailed, low-level programming (map, filter, reduce).
+No Query Optimization                       	Doesn’t use Catalyst Optimizer — slower than DataFrames/Datasets.
+Higher Memory Use	                            Less efficient memory management compared to DataFrames.
+Steeper Learning Curve	                      Needs deeper understanding of Spark internals and functional programming.
+
+
