@@ -1,0 +1,67 @@
+RDD (Resilient Distributed Dataset):
+
+                          Fundamental data structure of Apache Spark.
+
+                          Represents an immutable, distributed collection of objects.
+
+                          Enables parallel processing and fault tolerance across a cluster.
+
+                           Core foundation for big data applications requiring scalable computation.
+
+Features
+
+            Immutable:   Once created, cannot be modified.
+                         Transformations create new RDDs.
+                         Ensures consistency and simplifies recovery.
+
+           Distributed:  Data is partitioned across cluster nodes.
+                          Enables parallel processing of large datasets.
+
+           Fault Tolerant: Uses lineage graphs to rebuild lost partitions.
+                          Recomputes data from transformation history if a node fails.
+
+           Lazy Evaluation: Transformations are not executed immediately.
+                            Execution occurs only when an action is triggered (e.g., collect(), count()).
+                            Optimizes the execution plan.
+
+           In-Memory Processing: Stores data in memory for faster computation.
+                                 Minimizes disk I/O operations.
+           
+           Type-Safe Operations:Supports compile-time type checking (in Scala).
+                                Helps write error-free and robust code.
+
+
+Operations in RDD
+
+Transformations: (Return a new RDD)
+
+                      map(): Applies a function to each element.
+
+                    filter(): Selects elements based on a condition.
+
+                    flatMap(): Maps and flattens results into one RDD.
+
+
+Actions: (Trigger computation and return results)
+
+             collect(): Returns all elements to the driver.
+
+               count(): Counts total elements.
+
+              reduce(): Aggregates elements using a function.
+
+Advantages
+
+             ✅ Fine-grained control over distributed data.
+
+             ✅ Fault tolerance via lineage.
+
+             ✅ Lazy evaluation for optimized execution.
+
+Disadvantages
+
+            ⚠️ Requires manual optimization by developers.
+
+            ⚠️ No schema support (not ideal for structured data).
+
+⚠️ Slower than DataFrames and Datasets (no query optimization).
